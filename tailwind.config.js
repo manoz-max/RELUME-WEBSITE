@@ -17,6 +17,11 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  theme: {
+    extend: {
+      screens: {
+        xs: '480px', // Add custom screen size
+      },
+    },
+  },
 };
-
-

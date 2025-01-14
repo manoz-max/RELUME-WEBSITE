@@ -23,11 +23,12 @@ const Navbar = () => {
           <Link href="/">
             <img src="/logo.png" alt="Logo" width={40} height={40} />
           </Link>
-          <span className="text-lg font-semibold text-gray-800 cursor-pointer">Relume</span>
+          <span className="text-lg font-semibold text-gray-800 cursor-pointer">
+            Relume
+          </span>
         </div>
         {/* Desktop Navigation */}
-
-        <div className="hidden md:flex items-center gap-6">
+        <div className="xs:hidden sm:hidden md:hidden lg:flex  items-center lg:gap-0 xl:gap-6">
           <div
             className="relative group"
             onMouseEnter={() => setIsProductOpen(true)}
@@ -245,37 +246,37 @@ const Navbar = () => {
             >
               {/* Add Community Dropdown Links */}
               <Link
-                href="/forums"
+                href="/"
                 className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
               >
                 Community Love
               </Link>
               <Link
-                href="/events"
+                href="/"
                 className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
               >
                 Showcase
               </Link>
               <Link
-                href="/blog"
+                href="/"
                 className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
               >
                 Inspiration Feed
               </Link>
               <Link
-                href="/voting-board"
+                href="/"
                 className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
               >
                 Voting Board
               </Link>
               <Link
-                href="/slack"
+                href="/"
                 className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
               >
                 Slack
               </Link>
               <Link
-                href="/hire-an-expert"
+                href="/"
                 className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
               >
                 Hire an Expert
@@ -302,7 +303,7 @@ const Navbar = () => {
             Contact Sales
           </Link>
         </div>
-        <div className="hidden md:flex items-center gap-4">
+        <div className="xs:hidden sm:hidden md:hidden lg:flex items-center gap-4">
           <Link
             href="/app/login"
             className="font-medium flex items-center text-black hover:bg-gray-200 px-4 py-2 rounded-md"
@@ -317,7 +318,7 @@ const Navbar = () => {
         </div>
         {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden text-black font-medium px-4 py-2 rounded-md"
+          className="text-black font-medium px-4 py-2 rounded-md lg:hidden"
           onClick={toggleMenu}
         >
           <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
@@ -325,7 +326,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden px-6 py-4 bg-purple-50">
+        <div className="px-6 py-4 bg-purple-50">
           <button
             onClick={() =>
               setIsSmallScreenProductOpen(!isSmallScreenProductOpen)
