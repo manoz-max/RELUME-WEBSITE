@@ -1,21 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
+ 
 :root {
-  --background: #ffffff;
+  --background: #f3f4f6 ;
   --foreground: hsl(0, 0%, 9%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--background);
+  /* height: 100vh; */
+   /* font-family: Arial, Helvetica, sans-serif;  */
+} 
+
+.card {
+  position: relative; /* Ensure child elements are positioned relative to the card */
+  transition: border 0.3s ease;
+  padding: 20px;
+  margin: 20px;
+}
+ @media (min-width: 768px) {
+  .card:hover {
+    border: 2px solid blueviolet;
+    border-top: none;
+  }
+
+  .card:hover::before,
+  .card:hover::after {
+    content: '';
+    position: absolute;
+    width: 10px; /* Size of the square */
+    height: 10px; /* Size of the square */
+    background-color: blueviolet;
+  }
+
+  .card:hover::before {
+    bottom: -6px; /* Positioning slightly outside the border */
+    left: -6px; /* Left-bottom corner */
+  }
+
+  .card:hover::after {
+    bottom: -6px; /* Positioning slightly outside the border */
+    right: -6px; /* Right-bottom corner */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-   font-family: Arial, Helvetica, sans-serif; 
-} */
+@media (max-width: 767px) {
+  .card {
+    border: 2px solid blueviolet;
+    border-top: none;
+  }
+
+  .card::before,
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 10px; /* Size of the square */
+    height: 10px; /* Size of the square */
+    background-color: blueviolet;
+  }
+
+  .card::before {
+    bottom: -8px; /* Adjust for thicker border */
+    left: -8px; /* Left-bottom corner */
+  }
+
+  .card::after {
+    bottom: -8px; /* Adjust for thicker border */
+    right: -8px; /* Right-bottom corner */
+  }
+}
+
+.shuffle-btn {
+  position: absolute; /* Position relative to the .card */
+  bottom: 0; /* Align to the bottom */
+  left: 50px; /* Position slightly outside the card's border */
+  transform: translateY(50%); /* Adjust placement above the border */
+  background-color: #d5d0de; 
+  color: blueviolet;
+  border-radius: 10px;
+  padding: 6px 24px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shuffle-btn:hover {
+  color: white;
+  background-color: blueviolet;
+}
