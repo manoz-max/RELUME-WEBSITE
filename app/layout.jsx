@@ -10,11 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="px-6">
+      <body>
         <div className="card">
           <Navbar />
           {children}
-          {/* <ShuffleButton /> */}
         </div>
       </body>
     </html>

@@ -2,94 +2,86 @@
 import Image from "next/image";
 import "../../globals.css";
 import cardImage from "../../assets/images/card.png";
-import ShuffleButton from "../shufflebutton";
 import { useState } from "react";
+import ShuffleButton from "../shufflebutton";
 
 const HomeSection = () => {
-  const [shuffleState, setShuffleState] = useState(0); // 0 = default, 1 = first click, 2 = second click
+  const [shuffleState, setShuffleState] = useState(0);
 
   const handleShuffle = () => {
-    setShuffleState((prevState) => (prevState === 2 ? 1 : prevState + 1));
+    setShuffleState((prevState) => (prevState === 2 ? 0 : prevState + 1));
   };
-  const ComponentImage1 = () => {
+  const ImageComponent = ({ additionalClasses = "" }) => (
+    <Image
+      src={cardImage}
+      alt="Relume Preview"
+      height={180}
+      className={`w-full sm:w-3/4 md:w-full lg:w-72 ${additionalClasses}`}
+    />
+  );
+  const LeftSideImages = () => (
+    <div className="flex flex-col gap-4 transition-transform duration-300 group-hover:translate-x-5 lg:gap-8 items-center lg:items-start">
+      <ImageComponent additionalClasses="ml-7" />
+      <ImageComponent />
+      <ImageComponent additionalClasses="ml-7" />
+    </div>
+  );
+  const RightSideImages = () => {
     return (
-      <Image
-        src={cardImage}
-        alt="Relume Preview"
-        height={180}
-        className="ml-7 w-full sm:w-3/4 md:w-full lg:w-72"
-      />
+      <div className="flex flex-col gap-4 transition-transform duration-300 group-hover:-translate-x-5  lg:gap-8 items-center">
+        <ImageComponent />
+        <ImageComponent additionalClasses="ml-8" />
+        <ImageComponent />
+      </div>
     );
   };
-  const ComponentImage2 = () => {
+  const Content = ({ additionalClass = "" }) => {
     return (
-      <Image
-        src={cardImage}
-        alt="Relume Preview"
-        height={180}
-        className="w-full sm:w-3/4 md:w-full lg:w-72"
-      />
+      <div
+        className={`flex flex-col items-center justify-center text-center max-w-3xl px-4 ${additionalClass}`}
+      >
+        <h1 className="text-gray-900 font-extrabold text-3xl sm:text-4xl lg:text-7xl leading-snug">
+          Websites designed & built faster with AI
+        </h1>
+        <p className=" text-black text-xl mt-6 sm:text-lg lg:text-xl">
+          Use AI as your design ally, not as a replacement. Effortlessly
+          generate sitemaps and wireframes for marketing websites in minutes.
+        </p>
+      </div>
     );
   };
-  const renderImages = () => {
-    if (shuffleState === 1) {
-      return (
-        <div className="flex flex-wrap justify-center items-center gap-2">
-          {[...Array(6)].map((_, index) => (
-            <>
-              <ComponentImage1 />
-            </>
-          ))}
-        </div>
-      );
-    } else if (shuffleState === 2) {
-      return (
-        <div className="flex lg:flex-row flex-col justify-between items-center gap-8 w-full">
-          <div className="text-center lg:text-left max-w-3xl px-4">
-            <h1 className="text-gray-900 font-extrabold text-3xl sm:text-4xl lg:text-7xl leading-snug">
-              Websites designed & built faster with AI
-            </h1>
-            <p className="text-black text-xl mt-6 sm:text-lg lg:text-xl">
-              Use AI as your design ally, not as a replacement. Effortlessly
-              generate sitemaps and wireframes for marketing websites in
-              minutes.
-            </p>
-          </div>
-          <ComponentImage1 />
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
-    <section className="flex flex-col justify-evenly bg-gray-100 w-full group pt-6 h-full">
-      <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-full  gap-8">
+    <section className="flex flex-col justify-evenly bg-gray-100 w-full group pt-6 h-[500px]">
+      <div className="flex flex-col items-center gap-8">
         <ShuffleButton onClick={handleShuffle} />
-        {renderImages()}
-        <div className="flex flex-col gap-4 transition-transform duration-300 group-hover:translate-x-5 lg:gap-8 items-center lg:items-start">
-          <ComponentImage1 />
-          <ComponentImage2 />
-          <ComponentImage1 />
-        </div>
-        <div className="flex flex-col items-center justify-center text-center max-w-3xl px-4">
-          <h1 className="text-gray-900 font-extrabold text-3xl sm:text-4xl lg:text-7xl leading-snug">
-            Websites designed & built faster with AI
-          </h1>
-          <p className=" text-black text-xl mt-6 sm:text-lg lg:text-xl">
-            Use AI as your design ally, not as a replacement. Effortlessly
-            generate sitemaps and wireframes for marketing websites in minutes.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 transition-transform duration-300 group-hover:-translate-x-5  lg:gap-8 items-center">
-          <ComponentImage2 />
-          <ComponentImage1 />
-          <ComponentImage2 />
-        </div>
+        {shuffleState === 0 && (
+          <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-full  gap-8">
+            <LeftSideImages />
+            <Content />
+            <RightSideImages />
+          </div>
+        )}
+        {shuffleState === 1 && (
+          <div className="flex flex-col items-center gap-4 w-full">
+            <div className="flex flex-wrap justify-center gap-2">
+              {[...Array(4)].map((_, index) => (
+                <ImageComponent key={index} />
+              ))}
+            </div>
+            <div>
+              <Content additionalClass="lg:flex-row" />
+            </div>
+          </div>
+        )}
+        {shuffleState === 2 && (
+          <div className="flex flex-col lg:flex-row items-center w-full">
+            <Content />
+            <ImageComponent additionalClasses="lg:w-1/2" />
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default HomeSection;
-

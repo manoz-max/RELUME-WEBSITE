@@ -1,3 +1,7 @@
-export default function ShuffleButton() {
-    return <button className="shuffle-btn">Shuffle</button>;
+export default function ShuffleButton({ onClick }) {
+  return (
+    <button className="shuffle-btn" onClick={onClick}>
+      Shuffle
+    </button>
+  );
 }
