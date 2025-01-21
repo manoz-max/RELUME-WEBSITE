@@ -1,0 +1,23 @@
+/* Base card styles */
+.card {
+  padding: 20px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border 0.3s ease;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Border appears on hover for large screens */
+@media (min-width: 768px) {
+  .card:hover {
+    border: 2px solid #007bff;
+  }
+}
+
+/* Border always visible on small screens */
+@media (max-width: 767px) {
+  .card {
+    border: 2px solid #007bff;
+  }
+}

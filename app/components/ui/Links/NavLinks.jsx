@@ -11,7 +11,7 @@ export default function NavLinks() {
         <Link
           key={index}
           href={`/${link.source}`}
-          className="text-black font-medium hover:bg-gray-200 px-4 py-2 rounded-md"
+          className="text-black font-medium hover:bg-gray-400 px-4 py-2 rounded-md block"
         >
           {link.name}
         </Link>

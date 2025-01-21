@@ -14,10 +14,10 @@ body {
 } 
 
 .card {
-  position: relative; /* Ensure child elements are positioned relative to the card */
+  position: relative;
   transition: border 0.3s ease;
-  padding: 20px;
-  margin: 20px;
+  /* padding: 20px; */
+  /* margin: 10px; */
 }
  @media (min-width: 768px) {
   .card:hover {
@@ -90,3 +90,4 @@ body {
   color: white;
   background-color: blueviolet;
 }
+

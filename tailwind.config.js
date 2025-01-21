@@ -19,6 +19,10 @@ module.exports = {
   plugins: [],
   theme: {
     extend: {
+      backgroundImage: {
+        backgroundImage:
+          'linear-gradient(to bottom right, orange, red, purple)',
+      },
       screens: {
         xs: '480px', // Add custom screen size
       },
