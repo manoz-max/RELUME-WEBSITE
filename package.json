@@ -1,9 +1,12 @@
 {
+  "homepage": "https://manoz-max.github.io/RELUME-WEBSITE",
   "name": "relume",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d .next/static",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,12 +17,13 @@
     "framer-motion": "^11.17.0",
     "lottie-react": "^2.4.0",
     "next": "15.1.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"
